@@ -1,0 +1,1716 @@
+Atlas atlas-fe483h-shard-0 [primary] test> for (let i = 1; i <= 50; i++) {
+|
+|     db.products.insertOne({
+|         productId: i,
+|         productName: "Product " + i ,
+|         category:
+|             i % 5 === 0 ? "Laptop" :
+|             i % 5 === 1 ? "Mobile" :
+|             i % 5 === 2 ? "Headphones" :
+|             i % 5 === 3 ? "Keyboard" :
+|                           "Mouse",
+|
+|         brand:
+|             i % 3 === 0 ? "Dell" :
+|             i % 3 === 1 ? "Samsung" :
+|                           "HP",
+|
+|         price: 1000 + (i * 500),
+|
+|         stock: 10 + i,
+|
+|         rating: 3 + ((i % 3) * 0.5),
+|
+|         inStock: i % 4 !== 0,
+|
+|         tags: [
+|             "electronics",
+|             i % 2 === 0 ? "featured" : "new"
+|         ],
+|
+|         seller: {
+|             sellerId: 1000 + i,
+|             sellerName: "Seller " + i
+|         },
+|
+|         createdAt: new Date()
+|     });
+| }
+{
+  acknowledged: true,
+  insertedId: ObjectId('6aa0df8655df811dffeea85a')
+}
+Atlas atlas-fe483h-shard-0 [primary] test> db.EconDB
+test.EconDB
+Atlas atlas-fe483h-shard-0 [primary] test> for (let i = 1; i <= 50; i++) {
+|
+|     db.products.insertOne({
+|         productId: i,
+|         productName: "Product " + i ,
+|         category:
+|             i % 5 === 0 ? "Laptop" :
+|             i % 5 === 1 ? "Mobile" :
+|             i % 5 === 2 ? "Headphones" :
+|             i % 5 === 3 ? "Keyboard" :
+|                           "Mouse",
+|
+|         brand:
+|             i % 3 === 0 ? "Dell" :
+|             i % 3 === 1 ? "Samsung" :
+|                           "HP",
+|
+|         price: 1000 + (i * 500),
+|
+|         stock: 10 + i,
+|
+|         rating: 3 + ((i % 3) * 0.5),
+|
+|         inStock: i % 4 !== 0,
+|
+|         tags: [
+|             "electronics",
+|             i % 2 === 0 ? "featured" : "new"
+|         ],
+|
+|         seller: {
+|             sellerId: 1000 + i,
+|             sellerName: "Seller " + i
+|         },
+|
+|         createdAt: new Date()
+|     });
+| }
+{
+  acknowledged: true,
+  insertedId: ObjectId('6aa0dfee55df811dffeea88c')
+}
+Atlas atlas-fe483h-shard-0 [primary] test> db.products
+test.products
+Atlas atlas-fe483h-shard-0 [primary] test> test.products
+ReferenceError: test is not defined
+Atlas atlas-fe483h-shard-0 [primary] test> products
+ReferenceError: products is not defined
+Atlas atlas-fe483h-shard-0 [primary] test> db.products
+test.products
+Atlas atlas-fe483h-shard-0 [primary] test> use EconDB
+switched to db EconDB
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products
+EconDB.products
+Atlas atlas-fe483h-shard-0 [primary] EconDB> use EconDb.products
+MongoshInvalidInputError: [COMMON-10001] Invalid database name: EconDb.products
+Atlas atlas-fe483h-shard-0 [primary] EconDB> for (let i = 1; i <= 50; i++) {
+|
+|     db.products.insertOne({
+|         productId: i,
+|         productName: "Product " + i ,
+|         category:
+|             i % 5 === 0 ? "Laptop" :
+|             i % 5 === 1 ? "Mobile" :
+|             i % 5 === 2 ? "Headphones" :
+|             i % 5 === 3 ? "Keyboard" :
+|                           "Mouse",
+|
+|         brand:
+|             i % 3 === 0 ? "Dell" :
+|             i % 3 === 1 ? "Samsung" :
+|                           "HP",
+|
+|         price: 1000 + (i * 500),
+|
+|         stock: 10 + i,
+|
+|         rating: 3 + ((i % 3) * 0.5),
+|
+|         inStock: i % 4 !== 0,
+|
+|         tags: [
+|             "electronics",
+|             i % 2 === 0 ? "featured" : "new"
+|         ],
+|
+|         seller: {
+|             sellerId: 1000 + i,
+|             sellerName: "Seller " + i
+|         },
+|
+|         createdAt: new Date()
+|     });
+| }
+{
+  acknowledged: true,
+  insertedId: ObjectId('6aa0e08855df811dffeea8be')
+}
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.EconDB.updateOne(
+|     { productId: 1 },
+|     { $set: { rating: 4.5 } }
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Atlas atlas-fe483h-shard-0 [primary] EconDB> edit.
+| db.find({ productId: 1 })
+TypeError: Cannot read properties of undefined (reading 'find')
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.find({ productId: 1 })
+TypeError: db.find is not a function
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.find({ productId: 1 });
+TypeError: db.find is not a function
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.countDocuments()
+| 50
+|
+50
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.find({
+| |   category: "laptop",
+| |   stockQuantity: { $gt: 0 }
+| | })
+|
+Uncaught:
+SyntaxError: Unexpected token (2:0)
+
+  1 | db.products.find({
+> 2 | |   category: "laptop",
+    | ^
+  3 | |   stockQuantity: { $gt: 0 }
+  4 | | })
+  5 |
+
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.find({
+|    category: "laptop",
+| stockQuantity: { $gt: 0 }
+| })
+
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.find({
+|    price: { $gt: 10000, $lt: 30000 }
+|  })
+[
+  {
+    _id: ObjectId('6aa0e08555df811dffeea89f'),
+    productId: 19,
+    productName: 'Product 19',
+    category: 'Mouse',
+    brand: 'Samsung',
+    price: 10500,
+    stock: 29,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1019, sellerName: 'Seller 19' },
+    createdAt: ISODate('2026-09-09T04:28:53.110Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a0'),
+    productId: 20,
+    productName: 'Product 20',
+    category: 'Laptop',
+    brand: 'HP',
+    price: 11000,
+    stock: 30,
+    rating: 4,
+    inStock: false,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1020, sellerName: 'Seller 20' },
+    createdAt: ISODate('2026-09-09T04:28:53.198Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a1'),
+    productId: 21,
+    productName: 'Product 21',
+    category: 'Mobile',
+    brand: 'Dell',
+    price: 11500,
+    stock: 31,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1021, sellerName: 'Seller 21' },
+    createdAt: ISODate('2026-09-09T04:28:53.353Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a2'),
+    productId: 22,
+    productName: 'Product 22',
+    category: 'Headphones',
+    brand: 'Samsung',
+    price: 12000,
+    stock: 32,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1022, sellerName: 'Seller 22' },
+    createdAt: ISODate('2026-09-09T04:28:53.434Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a3'),
+    productId: 23,
+    productName: 'Product 23',
+    category: 'Keyboard',
+    brand: 'HP',
+    price: 12500,
+    stock: 33,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1023, sellerName: 'Seller 23' },
+    createdAt: ISODate('2026-09-09T04:28:53.514Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a4'),
+    productId: 24,
+    productName: 'Product 24',
+    category: 'Mouse',
+    brand: 'Dell',
+    price: 13000,
+    stock: 34,
+    rating: 3,
+    inStock: false,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1024, sellerName: 'Seller 24' },
+    createdAt: ISODate('2026-09-09T04:28:53.634Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a5'),
+    productId: 25,
+    productName: 'Product 25',
+    category: 'Laptop',
+    brand: 'Samsung',
+    price: 13500,
+    stock: 35,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1025, sellerName: 'Seller 25' },
+    createdAt: ISODate('2026-09-09T04:28:53.761Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8a6'),
+    productId: 26,
+    productName: 'Product 26',
+    category: 'Mobile',
+    brand: 'HP',
+    price: 14000,
+    stock: 36,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1026, sellerName: 'Seller 26' },
+    createdAt: ISODate('2026-09-09T04:28:54.094Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8a7'),
+    productId: 27,
+    productName: 'Product 27',
+    category: 'Headphones',
+    brand: 'Dell',
+    price: 14500,
+    stock: 37,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1027, sellerName: 'Seller 27' },
+    createdAt: ISODate('2026-09-09T04:28:54.179Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8a8'),
+    productId: 28,
+    productName: 'Product 28',
+    category: 'Keyboard',
+    brand: 'Samsung',
+    price: 15000,
+    stock: 38,
+    rating: 3.5,
+    inStock: false,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1028, sellerName: 'Seller 28' },
+    createdAt: ISODate('2026-09-09T04:28:54.297Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8a9'),
+    productId: 29,
+    productName: 'Product 29',
+    category: 'Mouse',
+    brand: 'HP',
+    price: 15500,
+    stock: 39,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1029, sellerName: 'Seller 29' },
+    createdAt: ISODate('2026-09-09T04:28:54.400Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8aa'),
+    productId: 30,
+    productName: 'Product 30',
+    category: 'Laptop',
+    brand: 'Dell',
+    price: 16000,
+    stock: 40,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1030, sellerName: 'Seller 30' },
+    createdAt: ISODate('2026-09-09T04:28:54.522Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8ab'),
+    productId: 31,
+    productName: 'Product 31',
+    category: 'Mobile',
+    brand: 'Samsung',
+    price: 16500,
+    stock: 41,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1031, sellerName: 'Seller 31' },
+    createdAt: ISODate('2026-09-09T04:28:54.614Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8ac'),
+    productId: 32,
+    productName: 'Product 32',
+    category: 'Headphones',
+    brand: 'HP',
+    price: 17000,
+    stock: 42,
+    rating: 4,
+    inStock: false,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1032, sellerName: 'Seller 32' },
+    createdAt: ISODate('2026-09-09T04:28:54.701Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8ad'),
+    productId: 33,
+    productName: 'Product 33',
+    category: 'Keyboard',
+    brand: 'Dell',
+    price: 17500,
+    stock: 43,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1033, sellerName: 'Seller 33' },
+    createdAt: ISODate('2026-09-09T04:28:54.808Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8ae'),
+    productId: 34,
+    productName: 'Product 34',
+    category: 'Mouse',
+    brand: 'Samsung',
+    price: 18000,
+    stock: 44,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1034, sellerName: 'Seller 34' },
+    createdAt: ISODate('2026-09-09T04:28:54.898Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8af'),
+    productId: 35,
+    productName: 'Product 35',
+    category: 'Laptop',
+    brand: 'HP',
+    price: 18500,
+    stock: 45,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1035, sellerName: 'Seller 35' },
+    createdAt: ISODate('2026-09-09T04:28:54.982Z')
+  },
+  {
+    _id: ObjectId('6aa0e08755df811dffeea8b0'),
+    productId: 36,
+    productName: 'Product 36',
+    category: 'Mobile',
+    brand: 'Dell',
+    price: 19000,
+    stock: 46,
+    rating: 3,
+    inStock: false,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1036, sellerName: 'Seller 36' },
+    createdAt: ISODate('2026-09-09T04:28:55.093Z')
+  },
+  {
+    _id: ObjectId('6aa0e08755df811dffeea8b1'),
+    productId: 37,
+    productName: 'Product 37',
+    category: 'Headphones',
+    brand: 'Samsung',
+    price: 19500,
+    stock: 47,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1037, sellerName: 'Seller 37' },
+    createdAt: ISODate('2026-09-09T04:28:55.200Z')
+  },
+  {
+    _id: ObjectId('6aa0e08755df811dffeea8b2'),
+    productId: 38,
+    productName: 'Product 38',
+    category: 'Keyboard',
+    brand: 'HP',
+    price: 20000,
+    stock: 48,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1038, sellerName: 'Seller 38' },
+    createdAt: ISODate('2026-09-09T04:28:55.289Z')
+  }
+]
+Type "it" for more
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.find({
+| inStock: true
+| })
+[
+  {
+    _id: ObjectId('6aa0e08355df811dffeea88d'),
+    productId: 1,
+    productName: 'Product 1',
+    category: 'Mobile',
+    brand: 'Samsung',
+    price: 1500,
+    stock: 11,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1001, sellerName: 'Seller 1' },
+    createdAt: ISODate('2026-09-09T04:28:51.199Z')
+  },
+  {
+    _id: ObjectId('6aa0e08355df811dffeea88e'),
+    productId: 2,
+    productName: 'Product 2',
+    category: 'Headphones',
+    brand: 'HP',
+    price: 2000,
+    stock: 12,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1002, sellerName: 'Seller 2' },
+    createdAt: ISODate('2026-09-09T04:28:51.365Z')
+  },
+  {
+    _id: ObjectId('6aa0e08355df811dffeea88f'),
+    productId: 3,
+    productName: 'Product 3',
+    category: 'Keyboard',
+    brand: 'Dell',
+    price: 2500,
+    stock: 13,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1003, sellerName: 'Seller 3' },
+    createdAt: ISODate('2026-09-09T04:28:51.461Z')
+  },
+  {
+    _id: ObjectId('6aa0e08355df811dffeea891'),
+    productId: 5,
+    productName: 'Product 5',
+    category: 'Laptop',
+    brand: 'HP',
+    price: 3500,
+    stock: 15,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1005, sellerName: 'Seller 5' },
+    createdAt: ISODate('2026-09-09T04:28:51.661Z')
+  },
+  {
+    _id: ObjectId('6aa0e08355df811dffeea892'),
+    productId: 6,
+    productName: 'Product 6',
+    category: 'Mobile',
+    brand: 'Dell',
+    price: 4000,
+    stock: 16,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1006, sellerName: 'Seller 6' },
+    createdAt: ISODate('2026-09-09T04:28:51.784Z')
+  },
+  {
+    _id: ObjectId('6aa0e08355df811dffeea893'),
+    productId: 7,
+    productName: 'Product 7',
+    category: 'Headphones',
+    brand: 'Samsung',
+    price: 4500,
+    stock: 17,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1007, sellerName: 'Seller 7' },
+    createdAt: ISODate('2026-09-09T04:28:51.892Z')
+  },
+  {
+    _id: ObjectId('6aa0e08455df811dffeea895'),
+    productId: 9,
+    productName: 'Product 9',
+    category: 'Mouse',
+    brand: 'Dell',
+    price: 5500,
+    stock: 19,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1009, sellerName: 'Seller 9' },
+    createdAt: ISODate('2026-09-09T04:28:52.094Z')
+  },
+  {
+    _id: ObjectId('6aa0e08455df811dffeea896'),
+    productId: 10,
+    productName: 'Product 10',
+    category: 'Laptop',
+    brand: 'Samsung',
+    price: 6000,
+    stock: 20,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1010, sellerName: 'Seller 10' },
+    createdAt: ISODate('2026-09-09T04:28:52.207Z')
+  },
+  {
+    _id: ObjectId('6aa0e08455df811dffeea897'),
+    productId: 11,
+    productName: 'Product 11',
+    category: 'Mobile',
+    brand: 'HP',
+    price: 6500,
+    stock: 21,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1011, sellerName: 'Seller 11' },
+    createdAt: ISODate('2026-09-09T04:28:52.302Z')
+  },
+  {
+    _id: ObjectId('6aa0e08455df811dffeea899'),
+    productId: 13,
+    productName: 'Product 13',
+    category: 'Keyboard',
+    brand: 'Samsung',
+    price: 7500,
+    stock: 23,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1013, sellerName: 'Seller 13' },
+    createdAt: ISODate('2026-09-09T04:28:52.530Z')
+  },
+  {
+    _id: ObjectId('6aa0e08455df811dffeea89a'),
+    productId: 14,
+    productName: 'Product 14',
+    category: 'Mouse',
+    brand: 'HP',
+    price: 8000,
+    stock: 24,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1014, sellerName: 'Seller 14' },
+    createdAt: ISODate('2026-09-09T04:28:52.627Z')
+  },
+  {
+    _id: ObjectId('6aa0e08455df811dffeea89b'),
+    productId: 15,
+    productName: 'Product 15',
+    category: 'Laptop',
+    brand: 'Dell',
+    price: 8500,
+    stock: 25,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1015, sellerName: 'Seller 15' },
+    createdAt: ISODate('2026-09-09T04:28:52.723Z')
+  },
+  {
+    _id: ObjectId('6aa0e08455df811dffeea89d'),
+    productId: 17,
+    productName: 'Product 17',
+    category: 'Headphones',
+    brand: 'HP',
+    price: 9500,
+    stock: 27,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1017, sellerName: 'Seller 17' },
+    createdAt: ISODate('2026-09-09T04:28:52.923Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea89e'),
+    productId: 18,
+    productName: 'Product 18',
+    category: 'Keyboard',
+    brand: 'Dell',
+    price: 10000,
+    stock: 28,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1018, sellerName: 'Seller 18' },
+    createdAt: ISODate('2026-09-09T04:28:53.014Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea89f'),
+    productId: 19,
+    productName: 'Product 19',
+    category: 'Mouse',
+    brand: 'Samsung',
+    price: 10500,
+    stock: 29,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1019, sellerName: 'Seller 19' },
+    createdAt: ISODate('2026-09-09T04:28:53.110Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a1'),
+    productId: 21,
+    productName: 'Product 21',
+    category: 'Mobile',
+    brand: 'Dell',
+    price: 11500,
+    stock: 31,
+    rating: 3,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1021, sellerName: 'Seller 21' },
+    createdAt: ISODate('2026-09-09T04:28:53.353Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a2'),
+    productId: 22,
+    productName: 'Product 22',
+    category: 'Headphones',
+    brand: 'Samsung',
+    price: 12000,
+    stock: 32,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1022, sellerName: 'Seller 22' },
+    createdAt: ISODate('2026-09-09T04:28:53.434Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a3'),
+    productId: 23,
+    productName: 'Product 23',
+    category: 'Keyboard',
+    brand: 'HP',
+    price: 12500,
+    stock: 33,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1023, sellerName: 'Seller 23' },
+    createdAt: ISODate('2026-09-09T04:28:53.514Z')
+  },
+  {
+    _id: ObjectId('6aa0e08555df811dffeea8a5'),
+    productId: 25,
+    productName: 'Product 25',
+    category: 'Laptop',
+    brand: 'Samsung',
+    price: 13500,
+    stock: 35,
+    rating: 3.5,
+    inStock: true,
+    tags: [ 'electronics', 'new' ],
+    seller: { sellerId: 1025, sellerName: 'Seller 25' },
+    createdAt: ISODate('2026-09-09T04:28:53.761Z')
+  },
+  {
+    _id: ObjectId('6aa0e08655df811dffeea8a6'),
+    productId: 26,
+    productName: 'Product 26',
+    category: 'Mobile',
+    brand: 'HP',
+    price: 14000,
+    stock: 36,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'featured' ],
+    seller: { sellerId: 1026, sellerName: 'Seller 26' },
+    createdAt: ISODate('2026-09-09T04:28:54.094Z')
+  }
+]
+Type "it" for more
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.find({ stockQuantity: $gt: 0 })
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:37)
+
+> 1 | db.products.find({ stockQuantity: $gt: 0 })
+    |                                      ^
+  2 |
+
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.find({ stockQuantity: { $gt: 0 })
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:44)
+
+> 1 | db.products.find({ stockQuantity: { $gt: 0 })
+    |                                             ^
+  2 |
+
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.find({ stockQuantity: { $gt: 0 })
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:44)
+
+> 1 | db.products.find({ stockQuantity: { $gt: 0 })
+    |                                             ^
+  2 |
+
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.find({ stockQuantity: { $gt: 0 }})
+
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.updateMany({ productId: 4 }, { $set: { price: 70000 } })
+Uncaught:
+MongoServerSelectionError: getaddrinfo ENOTFOUND ac-4raqo2m-shard-00-00.dinc97u.mongodb.net
+Caused by:
+MongoNetworkError: getaddrinfo ENOTFOUND ac-4raqo2m-shard-00-00.dinc97u.mongodb.net
+Caused by:
+Error: getaddrinfo ENOTFOUND ac-4raqo2m-shard-00-00.dinc97u.mongodb.net
+Atlas atlas-fe483h-shard-0 [secondary] EconDB> db.products.updateOne(
+|   { productId: 5 },
+|   { $addToSet: { tags: "electronics2" } }
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.products.find({ productId: 5 })
+[
+  {
+    _id: ObjectId('6aa0e08355df811dffeea891'),
+    productId: 5,
+    productName: 'Product 5',
+    category: 'Laptop',
+    brand: 'HP',
+    price: 3500,
+    stock: 15,
+    rating: 4,
+    inStock: true,
+    tags: [ 'electronics', 'new', 'electronics2' ],
+    seller: { sellerId: 1005, sellerName: 'Seller 5' },
+    createdAt: ISODate('2026-09-09T04:28:51.661Z')
+  }
+]
+Atlas atlas-fe483h-shard-0 [primary] EconDB> use aggex
+switched to db aggex
+Atlas atlas-fe483h-shard-0 [primary] EconDB> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+const categories = [
+    "Electronics",
+    "Mobiles",
+    "Laptops",
+    "Home Appliances",
+    "Fashion",
+    "Books",
+    "Sports",
+    "Beauty",
+    "Grocery",
+    "Furniture"
+];
+
+const subCategories = {
+    "Electronics": ["Headphones", "Smartwatch", "Camera", "Speaker"],
+    "Mobiles": ["Android", "iPhone", "Feature Phone"],
+    "Laptops": ["Gaming", "Business", "Student"],
+    "Home Appliances": ["Refrigerator", "Washing Machine", "Microwave"],
+    "Fashion": ["Men", "Women", "Kids"],
+    "Books": ["Programming", "Fiction", "Education"],
+    "Sports": ["Cricket", "Football", "Fitness"],
+    "Beauty": ["Skincare", "Haircare", "Makeup"],
+    "Grocery": ["Snacks", "Beverages", "Staples"],
+    "Furniture": ["Chair", "Table", "Sofa"]
+};
+
+const brands = [
+    "Samsung",
+    "Apple",
+    "Sony",
+    "LG",
+    "HP",
+    "Dell",
+    "Lenovo",
+    "Nike",
+    "Adidas",
+    "Boat",
+    "OnePlus",
+    "AmazonBasics"
+];
+
+const cities = [
+    "Chennai",
+    "Coimbatore",
+    "Bangalore",
+    "Hyderabad",
+    "Mumbai",
+    "Delhi",
+    "Pune",
+    "Kochi",
+    "Kolkata",
+    "Ahmedabad"
+];
+
+const states = [
+    "Tamil Nadu",
+    "Karnataka",
+    "Telangana",
+    "Maharashtra",
+    "Delhi",
+    "Kerala",
+    "West Bengal",
+    "Gujarat"
+];
+
+const paymentMethods = [
+    "UPI",
+    "Credit Card",
+    "Debit Card",
+    "Net Banking",
+    "Cash on Delivery"
+];
+
+const orderStatuses = [
+    "Delivered",
+    "Shipped",
+    "Processing",
+    "Cancelled",
+    "Returned"
+];
+
+const sellers = [
+    "RetailHub",
+    "TechWorld",
+    "MegaStore",
+    "DigitalMart",
+    "SmartShop",
+    "PrimeRetail"
+];
+
+const tags = [
+    "new",
+    "popular",
+    "trending",
+    "premium",
+    "budget",
+    "best-seller",
+    "discount",
+    "limited-stock"
+];
+
+
+// Store documents temporarily
+let documents = [];
+
+
+// Generate 5000 documents
+for (let i = 1; i <= 5000; i++) {
+
+    const category =
+        categories[Math.floor(Math.random() * categories.length)];
+
+    const subCategory =
+        subCategories[category][
+            Math.floor(Math.random() * subCategories[category].length)
+        ];
+
+    const brand =
+        brands[Math.floor(Math.random() * brands.length)];
+
+    const city =
+        cities[Math.floor(Math.random() * cities.length)];
+
+    const state =
+        states[Math.floor(Math.random() * states.length)];
+
+    const paymentMethod =
+        paymentMethods[
+            Math.floor(Math.random() * paymentMethods.length)
+        ];
+
+    const orderStatus =
+        orderStatuses[
+            Math.floor(Math.random() * orderStatuses.length)
+        ];
+
+    const seller =
+        sellers[
+            Math.floor(Math.random() * sellers.length)
+        ];
+
+
+    const quantity =
+        Math.floor(Math.random() * 5) + 1;
+
+    const price =
+        Math.floor(Math.random() * 95000) + 500;
+
+    const discount =
+        Math.floor(Math.random() * 51);
+
+    const discountedPrice =
+        Math.round(
+            price - (price * discount / 100)
+        );
+
+    const rating =
+        Number(
+            (Math.random() * 4 + 1).toFixed(1)
+        );
+
+    const stock =
+        Math.floor(Math.random() * 500);
+
+
+    // Generate 2 random tags
+    const selectedTags = [];
+
+    for (let j = 0; j < 2; j++) {
+
+        selectedTags.push(
+            tags[Math.floor(Math.random() * tags.length)]
+        );
+    }
+
+
+    // Random date between 2024 and 2026
+    const startDate =
+        new Date("2024-01-01").getTime();
+
+    const endDate =
+        new Date("2026-08-25").getTime();
+
+    const randomDate =
+        new Date(
+            startDate +
+            Math.random() * (endDate - startDate)
+        );
+
+
+    // Create document
+    const product = {
+
+        productId:
+            "PROD" + String(i).padStart(5, "0"),
+
+        productName:
+            brand + " " + subCategory + " " + i,
+
+        category: category,
+
+        subCategory: subCategory,
+
+        brand: brand,
+
+        price: price,
+
+        discountPercentage: discount,
+
+        discountedPrice: discountedPrice,
+
+        quantity: quantity,
+
+        revenue:
+            discountedPrice * quantity,
+
+        rating: rating,
+
+        reviewCount:
+            Math.floor(Math.random() * 5000),
+
+        stock: stock,
+
+        inStock:
+            stock > 0,
+
+
+        seller: {
+
+            name: seller,
+
+            sellerRating:
+                Number(
+                    (Math.random() * 4 + 1).toFixed(1)
+                )
+        },
+
+
+        customer: {
+
+            customerId:
+                "CUS" +
+                String(
+                    Math.floor(Math.random() * 1000) + 1
+                ).padStart(4, "0"),
+
+            city: city,
+
+            state: state,
+
+            age:
+                Math.floor(Math.random() * 50) + 18
+        },
+
+
+        payment: {
+
+            method: paymentMethod,
+
+            transactionId:
+                "TXN" +
+                Math.random()
+                    .toString(36)
+                    .substring(2, 12)
+        },
+
+
+        orderStatus: orderStatus,
+
+        orderDate: randomDate,
+
+        tags: selectedTags,
+
+
+        specifications: {
+
+            warranty:
+                (Math.floor(Math.random() * 3) + 1) +
+                " years",
+
+            color: [
+                "Black",
+                "White",
+                "Blue",
+                "Red",
+                "Silver"
+            ][Math.floor(Math.random() * 5)],
+
+            weight:
+                Number(
+                    (Math.random() * 5 + 0.5).toFixed(2)
+                )
+        },
+
+
+        isFeatured:
+            Math.random() > 0.7,
+
+        createdAt: new Date()
+    };
+
+
+    documents.push(product);
+
+
+    // Insert every 500 documents
+    if (documents.length === 500) {
+
+        db.aggex.insertMany(documents);
+
+        documents = [];
+    }
+}
+
+// Insert remaining documents
+if (documents.length > 0) {
+
+    db.aggex.insertMany(documents);
+}
+print("5000 documents inserted successfully into aggex!");
+5000 documents inserted successfully into aggex!
+
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.aggex.find(
+|   {},
+|   { productName: 1, category: 1, brand: 1, _id: 0 }
+| )
+[
+  { productName: 'Sony Android 1', category: 'Mobiles', brand: 'Sony' },
+  {
+    productName: 'AmazonBasics Kids 2',
+    category: 'Fashion',
+    brand: 'AmazonBasics'
+  },
+  { productName: 'HP Men 3', category: 'Fashion', brand: 'HP' },
+  { productName: 'Boat Student 4', category: 'Laptops', brand: 'Boat' },
+  { productName: 'Apple Kids 5', category: 'Fashion', brand: 'Apple' },
+  {
+    productName: 'Lenovo Football 6',
+    category: 'Sports',
+    brand: 'Lenovo'
+  },
+  { productName: 'Sony iPhone 7', category: 'Mobiles', brand: 'Sony' },
+  {
+    productName: 'Samsung Table 8',
+    category: 'Furniture',
+    brand: 'Samsung'
+  },
+  { productName: 'HP Makeup 9', category: 'Beauty', brand: 'HP' },
+  {
+    productName: 'Lenovo Women 10',
+    category: 'Fashion',
+    brand: 'Lenovo'
+  },
+  { productName: 'Sony Business 11', category: 'Laptops', brand: 'Sony' },
+  {
+    productName: 'Dell Feature Phone 12',
+    category: 'Mobiles',
+    brand: 'Dell'
+  },
+  {
+    productName: 'Samsung Education 13',
+    category: 'Books',
+    brand: 'Samsung'
+  },
+  { productName: 'Boat Gaming 14', category: 'Laptops', brand: 'Boat' },
+  { productName: 'Nike Skincare 15', category: 'Beauty', brand: 'Nike' },
+  { productName: 'Boat Haircare 16', category: 'Beauty', brand: 'Boat' },
+  {
+    productName: 'Lenovo Smartwatch 17',
+    category: 'Electronics',
+    brand: 'Lenovo'
+  },
+  {
+    productName: 'Boat Smartwatch 18',
+    category: 'Electronics',
+    brand: 'Boat'
+  },
+  {
+    productName: 'Lenovo Table 19',
+    category: 'Furniture',
+    brand: 'Lenovo'
+  },
+  {
+    productName: 'OnePlus Programming 20',
+    category: 'Books',
+    brand: 'OnePlus'
+  }
+]
+Type "it" for more
+Atlas atlas-fe483h-shard-0 [primary] EconDB> it
+[
+  { productName: 'Boat Gaming 21', category: 'Laptops', brand: 'Boat' },
+  { productName: 'Nike iPhone 22', category: 'Mobiles', brand: 'Nike' },
+  { productName: 'LG Snacks 23', category: 'Grocery', brand: 'LG' },
+  {
+    productName: 'Apple Business 24',
+    category: 'Laptops',
+    brand: 'Apple'
+  },
+  { productName: 'LG Business 25', category: 'Laptops', brand: 'LG' },
+  {
+    productName: 'Samsung Refrigerator 26',
+    category: 'Home Appliances',
+    brand: 'Samsung'
+  },
+  { productName: 'HP Staples 27', category: 'Grocery', brand: 'HP' },
+  {
+    productName: 'Samsung Gaming 28',
+    category: 'Laptops',
+    brand: 'Samsung'
+  },
+  {
+    productName: 'AmazonBasics Smartwatch 29',
+    category: 'Electronics',
+    brand: 'AmazonBasics'
+  },
+  { productName: 'Sony Makeup 30', category: 'Beauty', brand: 'Sony' },
+  { productName: 'Boat Table 31', category: 'Furniture', brand: 'Boat' },
+  {
+    productName: 'Apple Speaker 32',
+    category: 'Electronics',
+    brand: 'Apple'
+  },
+  { productName: 'Nike Cricket 33', category: 'Sports', brand: 'Nike' },
+  {
+    productName: 'Boat Microwave 34',
+    category: 'Home Appliances',
+    brand: 'Boat'
+  },
+  {
+    productName: 'Lenovo Football 35',
+    category: 'Sports',
+    brand: 'Lenovo'
+  },
+  { productName: 'LG Gaming 36', category: 'Laptops', brand: 'LG' },
+  {
+    productName: 'Apple Microwave 37',
+    category: 'Home Appliances',
+    brand: 'Apple'
+  },
+  {
+    productName: 'AmazonBasics Table 38',
+    category: 'Furniture',
+    brand: 'AmazonBasics'
+  },
+  { productName: 'LG Gaming 39', category: 'Laptops', brand: 'LG' },
+  {
+    productName: 'Adidas Fiction 40',
+    category: 'Books',
+    brand: 'Adidas'
+  }
+]
+Type "it" for more
+Atlas atlas-fe483h-shard-0 [primary] EconDB> it
+[
+  { productName: 'Lenovo Kids 41', category: 'Fashion', brand: 'Lenovo' },
+  { productName: 'Nike Android 42', category: 'Mobiles', brand: 'Nike' },
+  { productName: 'Nike Makeup 43', category: 'Beauty', brand: 'Nike' },
+  {
+    productName: 'OnePlus Haircare 44',
+    category: 'Beauty',
+    brand: 'OnePlus'
+  },
+  { productName: 'Dell Student 45', category: 'Laptops', brand: 'Dell' },
+  { productName: 'LG Snacks 46', category: 'Grocery', brand: 'LG' },
+  {
+    productName: 'Lenovo Business 47',
+    category: 'Laptops',
+    brand: 'Lenovo'
+  },
+  { productName: 'Sony Haircare 48', category: 'Beauty', brand: 'Sony' },
+  {
+    productName: 'Boat Refrigerator 49',
+    category: 'Home Appliances',
+    brand: 'Boat'
+  },
+  {
+    productName: 'Apple Refrigerator 50',
+    category: 'Home Appliances',
+    brand: 'Apple'
+  },
+  {
+    productName: 'Adidas Beverages 51',
+    category: 'Grocery',
+    brand: 'Adidas'
+  },
+  { productName: 'LG iPhone 52', category: 'Mobiles', brand: 'LG' },
+  {
+    productName: 'Lenovo Chair 53',
+    category: 'Furniture',
+    brand: 'Lenovo'
+  },
+  {
+    productName: 'Adidas Makeup 54',
+    category: 'Beauty',
+    brand: 'Adidas'
+  },
+  {
+    productName: 'Lenovo Gaming 55',
+    category: 'Laptops',
+    brand: 'Lenovo'
+  },
+  {
+    productName: 'LG Headphones 56',
+    category: 'Electronics',
+    brand: 'LG'
+  },
+  {
+    productName: 'LG Washing Machine 57',
+    category: 'Home Appliances',
+    brand: 'LG'
+  },
+  {
+    productName: 'Nike Washing Machine 58',
+    category: 'Home Appliances',
+    brand: 'Nike'
+  },
+  {
+    productName: 'Apple Smartwatch 59',
+    category: 'Electronics',
+    brand: 'Apple'
+  },
+  { productName: 'Boat Skincare 60', category: 'Beauty', brand: 'Boat' }
+]
+Type "it" for more
+Atlas atlas-fe483h-shard-0 [primary] EconDB> it
+[
+  {
+    productName: 'Boat Beverages 61',
+    category: 'Grocery',
+    brand: 'Boat'
+  },
+  {
+    productName: 'OnePlus Table 62',
+    category: 'Furniture',
+    brand: 'OnePlus'
+  },
+  {
+    productName: 'Adidas Feature Phone 63',
+    category: 'Mobiles',
+    brand: 'Adidas'
+  },
+  {
+    productName: 'AmazonBasics Refrigerator 64',
+    category: 'Home Appliances',
+    brand: 'AmazonBasics'
+  },
+  {
+    productName: 'Lenovo Refrigerator 65',
+    category: 'Home Appliances',
+    brand: 'Lenovo'
+  },
+  { productName: 'Dell Sofa 66', category: 'Furniture', brand: 'Dell' },
+  {
+    productName: 'Adidas Feature Phone 67',
+    category: 'Mobiles',
+    brand: 'Adidas'
+  },
+  { productName: 'Boat Table 68', category: 'Furniture', brand: 'Boat' },
+  {
+    productName: 'OnePlus Staples 69',
+    category: 'Grocery',
+    brand: 'OnePlus'
+  },
+  {
+    productName: 'AmazonBasics Beverages 70',
+    category: 'Grocery',
+    brand: 'AmazonBasics'
+  },
+  { productName: 'Nike Football 71', category: 'Sports', brand: 'Nike' },
+  {
+    productName: 'Lenovo Chair 72',
+    category: 'Furniture',
+    brand: 'Lenovo'
+  },
+  { productName: 'LG Student 73', category: 'Laptops', brand: 'LG' },
+  { productName: 'Dell Fiction 74', category: 'Books', brand: 'Dell' },
+  { productName: 'Boat Fiction 75', category: 'Books', brand: 'Boat' },
+  { productName: 'Sony Kids 76', category: 'Fashion', brand: 'Sony' },
+  {
+    productName: 'AmazonBasics Men 77',
+    category: 'Fashion',
+    brand: 'AmazonBasics'
+  },
+  {
+    productName: 'Samsung Feature Phone 78',
+    category: 'Mobiles',
+    brand: 'Samsung'
+  },
+  {
+    productName: 'Lenovo Beverages 79',
+    category: 'Grocery',
+    brand: 'Lenovo'
+  },
+  {
+    productName: 'Apple Speaker 80',
+    category: 'Electronics',
+    brand: 'Apple'
+  }
+]
+Type "it" for more
+Atlas atlas-fe483h-shard-0 [primary] EconDB> it
+[
+  {
+    productName: 'Boat Smartwatch 81',
+    category: 'Electronics',
+    brand: 'Boat'
+  },
+  {
+    productName: 'Samsung Haircare 82',
+    category: 'Beauty',
+    brand: 'Samsung'
+  },
+  {
+    productName: 'Sony Refrigerator 83',
+    category: 'Home Appliances',
+    brand: 'Sony'
+  },
+  {
+    productName: 'Samsung Microwave 84',
+    category: 'Home Appliances',
+    brand: 'Samsung'
+  },
+  {
+    productName: 'AmazonBasics Haircare 85',
+    category: 'Beauty',
+    brand: 'AmazonBasics'
+  },
+  { productName: 'Nike Cricket 86', category: 'Sports', brand: 'Nike' },
+  {
+    productName: 'AmazonBasics Haircare 87',
+    category: 'Beauty',
+    brand: 'AmazonBasics'
+  },
+  {
+    productName: 'Lenovo Cricket 88',
+    category: 'Sports',
+    brand: 'Lenovo'
+  },
+  { productName: 'LG Programming 89', category: 'Books', brand: 'LG' },
+  { productName: 'Sony Men 90', category: 'Fashion', brand: 'Sony' },
+  {
+    productName: 'HP Microwave 91',
+    category: 'Home Appliances',
+    brand: 'HP'
+  },
+  {
+    productName: 'Lenovo Feature Phone 92',
+    category: 'Mobiles',
+    brand: 'Lenovo'
+  },
+  {
+    productName: 'Adidas Feature Phone 93',
+    category: 'Mobiles',
+    brand: 'Adidas'
+  },
+  { productName: 'HP Men 94', category: 'Fashion', brand: 'HP' },
+  {
+    productName: 'Samsung Football 95',
+    category: 'Sports',
+    brand: 'Samsung'
+  },
+  {
+    productName: 'Adidas Student 96',
+    category: 'Laptops',
+    brand: 'Adidas'
+  },
+  {
+    productName: 'Lenovo Table 97',
+    category: 'Furniture',
+    brand: 'Lenovo'
+  },
+  { productName: 'Sony Fitness 98', category: 'Sports', brand: 'Sony' },
+  { productName: 'Apple Kids 99', category: 'Fashion', brand: 'Apple' },
+  { productName: 'HP Gaming 100', category: 'Laptops', brand: 'HP' }
+]
+Type "it" for more
+Atlas atlas-fe483h-shard-0 [primary] EconDB> it
+[
+  {
+    productName: 'AmazonBasics Android 101',
+    category: 'Mobiles',
+    brand: 'AmazonBasics'
+  },
+  {
+    productName: 'Sony Camera 102',
+    category: 'Electronics',
+    brand: 'Sony'
+  },
+  {
+    productName: 'Apple Sofa 103',
+    category: 'Furniture',
+    brand: 'Apple'
+  },
+  { productName: 'HP Fitness 104', category: 'Sports', brand: 'HP' },
+  { productName: 'LG Chair 105', category: 'Furniture', brand: 'LG' },
+  { productName: 'LG Women 106', category: 'Fashion', brand: 'LG' },
+  {
+    productName: 'Samsung Fitness 107',
+    category: 'Sports',
+    brand: 'Samsung'
+  },
+  {
+    productName: 'Lenovo Sofa 108',
+    category: 'Furniture',
+    brand: 'Lenovo'
+  },
+  {
+    productName: 'OnePlus Business 109',
+    category: 'Laptops',
+    brand: 'OnePlus'
+  },
+  {
+    productName: 'Adidas Women 110',
+    category: 'Fashion',
+    brand: 'Adidas'
+  },
+  {
+    productName: 'Adidas Programming 111',
+    category: 'Books',
+    brand: 'Adidas'
+  },
+  { productName: 'HP iPhone 112', category: 'Mobiles', brand: 'HP' },
+  {
+    productName: 'Lenovo Beverages 113',
+    category: 'Grocery',
+    brand: 'Lenovo'
+  },
+  {
+    productName: 'Samsung Education 114',
+    category: 'Books',
+    brand: 'Samsung'
+  },
+  {
+    productName: 'Samsung iPhone 115',
+    category: 'Mobiles',
+    brand: 'Samsung'
+  },
+  {
+    productName: 'OnePlus Fiction 116',
+    category: 'Books',
+    brand: 'OnePlus'
+  },
+  {
+    productName: 'Dell Refrigerator 117',
+    category: 'Home Appliances',
+    brand: 'Dell'
+  },
+  {
+    productName: 'Samsung Washing Machine 118',
+    category: 'Home Appliances',
+    brand: 'Samsung'
+  },
+  {
+    productName: 'Sony Refrigerator 119',
+    category: 'Home Appliances',
+    brand: 'Sony'
+  },
+  { productName: 'HP Camera 120', category: 'Electronics', brand: 'HP' }
+]
+Type "it" for more
+Atlas atlas-fe483h-shard-0 [primary] EconDB> db.aggex.aggregate([
+|   {
+|     $group: {
+|       _id: "$productId",
+|       productName: { $first: "$productName" },
+|       category: { $first: "$category" },
+|       brand: { $first: "$brand" }
+|     }
+|   }
+| ])
+[
+  {
+    _id: 'PROD00760',
+    productName: 'Samsung Speaker 760',
+    category: 'Electronics',
+    brand: 'Samsung'
+  },
+  {
+    _id: 'PROD01197',
+    productName: 'AmazonBasics Refrigerator 1197',
+    category: 'Home Appliances',
+    brand: 'AmazonBasics'
+  },
+  {
+    _id: 'PROD03092',
+    productName: 'Adidas Microwave 3092',
+    category: 'Home Appliances',
+    brand: 'Adidas'
+  },
+  {
+    _id: 'PROD03359',
+    productName: 'AmazonBasics Android 3359',
+    category: 'Mobiles',
+    brand: 'AmazonBasics'
+  },
+  {
+    _id: 'PROD01444',
+    productName: 'Nike Refrigerator 1444',
+    category: 'Home Appliances',
+    brand: 'Nike'
+  },
+  {
+    _id: 'PROD01644',
+    productName: 'AmazonBasics Sofa 1644',
+    category: 'Furniture',
+    brand: 'AmazonBasics'
+  },
+  {
+    _id: 'PROD01275',
+    productName: 'AmazonBasics Men 1275',
+    category: 'Fashion',
+    brand: 'AmazonBasics'
+  },
+  {
+    _id: 'PROD04018',
+    productName: 'Apple Beverages 4018',
+    category: 'Grocery',
+    brand: 'Apple'
+  },
+  {
+    _id: 'PROD04053',
+    productName: 'AmazonBasics Headphones 4053',
+    category: 'Electronics',
+    brand: 'AmazonBasics'
+  },
+  {
+    _id: 'PROD04697',
+    productName: 'Boat Table 4697',
+    category: 'Furniture',
+    brand: 'Boat'
+  },
+  {
+    _id: 'PROD01663',
+    productName: 'LG Camera 1663',
+    category: 'Electronics',
+    brand: 'LG'
+  },
+  {
+    _id: 'PROD01802',
+    productName: 'Nike Makeup 1802',
+    category: 'Beauty',
+    brand: 'Nike'
+  },
+  {
+    _id: 'PROD00011',
+    productName: 'Sony Business 11',
+    category: 'Laptops',
+    brand: 'Sony'
+  },
+  {
+    _id: 'PROD03202',
+    productName: 'LG Snacks 3202',
+    category: 'Grocery',
+    brand: 'LG'
+  },
+  {
+    _id: 'PROD01981',
+    productName: 'AmazonBasics Sofa 1981',
+    category: 'Furniture',
+    brand: 'AmazonBasics'
+  },
+  {
+    _id: 'PROD03526',
+    productName: 'Samsung Kids 3526',
+    category: 'Fashion',
+    brand: 'Samsung'
+  },
+  {
+    _id: 'PROD02660',
+    productName: 'Adidas Makeup 2660',
+    category: 'Beauty',
+    brand: 'Adidas'
+  },
+  {
+    _id: 'PROD04992',
+    productName: 'Nike Beverages 4992',
+    category: 'Grocery',
+    brand: 'Nike'
+  },
+  {
+    _id: 'PROD03291',
+    productName: 'Sony Student 3291',
+    category: 'Laptops',
+    brand: 'Sony'
+  },
+  {
+    _id: 'PROD00871',
+    productName: 'HP Smartwatch 871',
+    category: 'Electronics',
+    brand: 'HP'
+  }
+]
+Type "it" for more
+Atlas atlas-fe483h-shard-0 [primary] EconDB>
