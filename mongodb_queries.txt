@@ -1,0 +1,388 @@
+Atlas atlas-fe483h-shard-0 [primary] test> db.getCollectionNames().forEach(c => { print(`\n=== ${c.toUpperCase()} ===`); printjson(db[c].find().toArray()); })
+
+=== COMPANIES ===
+[
+  {
+    _id: ObjectId('6aa0cb7fbe4fb4bc146fc938'),
+    companyId: 'C101',
+    name: 'TechCorp Solutions',
+    location: 'Bangalore',
+    eligibleDepts: [
+      'CSE',
+      'IT'
+    ],
+    minMarksCriteria: 80,
+    roles: [
+      'Software Engineer',
+      'Data Analyst'
+    ]
+  },
+  {
+    _id: ObjectId('6aa0cb7fbe4fb4bc146fc939'),
+    companyId: 'C102',
+    name: 'InnovateX',
+    location: 'Chennai',
+    eligibleDepts: [
+      'CSE',
+      'ECE',
+      'EEE'
+    ],
+    minMarksCriteria: 75,
+    roles: [
+      'Embedded Systems Engineer',
+      'Full Stack Developer'
+    ]
+  },
+  {
+    _id: ObjectId('6aa0cbbd829d080a02b1853b'),
+    companyId: 'C103',
+    name: 'Zoho Corporation',
+    industry: 'Software & SaaS',
+    headquarters: 'Chennai',
+    tier: 'Tier 1',
+    website: 'https://zoho.com'
+  },
+  {
+    _id: ObjectId('6aa0cbbd829d080a02b1853c'),
+    companyId: 'C104',
+    name: 'Tata Consultancy Services',
+    industry: 'IT Services',
+    headquarters: 'Mumbai',
+    tier: 'Mass Recruiter',
+    website: 'https://tcs.com'
+  },
+  {
+    _id: ObjectId('6aa0cbbd829d080a02b1853d'),
+    companyId: 'C105',
+    name: 'Qualcomm',
+    industry: 'Semiconductors & Wireless',
+    headquarters: 'Bangalore',
+    tier: 'Tier 1',
+    website: 'https://qualcomm.com'
+  },
+  {
+    _id: ObjectId('6aa0cbbd829d080a02b1853e'),
+    companyId: 'C106',
+    name: 'L&T Construction',
+    industry: 'Infrastructure & Civil',
+    headquarters: 'Chennai',
+    tier: 'Core',
+    website: 'https://larsentoubro.com'
+  }
+]
+
+=== STUDENTS ===
+[
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6aad'),
+    rollNo: 101,
+    name: 'Vasanth',
+    age: 21,
+    department: 'CSE',
+    marks: 85,
+    skills: [
+      'Java',
+      'Python',
+      'MongoDB'
+    ],
+    address: {
+      city: 'Chennai',
+      state: 'Tamil Nadu'
+    },
+    scholarship: true
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6aae'),
+    rollNo: 102,
+    name: 'Rahul',
+    age: 22,
+    department: 'ECE',
+    marks: 72,
+    skills: [
+      'C',
+      'Python',
+      'Arduino'
+    ],
+    address: {
+      city: 'Bangalore',
+      state: 'Karnataka'
+    },
+    scholarship: false
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6aaf'),
+    rollNo: 103,
+    name: 'Priya',
+    age: 20,
+    department: 'CSE',
+    marks: 91,
+    skills: [
+      'Java',
+      'Python',
+      'AI'
+    ],
+    address: {
+      city: 'Chennai',
+      state: 'Tamil Nadu'
+    },
+    scholarship: true
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6ab0'),
+    rollNo: 104,
+    name: 'Arjun',
+    age: 23,
+    department: 'MECH',
+    marks: 68,
+    skills: [
+      'AutoCAD',
+      'C',
+      'Java'
+    ],
+    address: {
+      city: 'Hyderabad',
+      state: 'Telangana'
+    }
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6ab1'),
+    rollNo: 105,
+    name: 'Sneha',
+    age: 21,
+    department: 'IT',
+    marks: 88,
+    skills: [
+      'Python',
+      'MongoDB',
+      'HTML'
+    ],
+    address: {
+      city: 'Chennai',
+      state: 'Tamil Nadu'
+    },
+    scholarship: true
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6ab2'),
+    rollNo: 106,
+    name: 'Kiran',
+    age: 24,
+    department: 'EEE',
+    marks: 65,
+    skills: [
+      'C',
+      'Arduino',
+      'MATLAB'
+    ],
+    address: {
+      city: 'Pune',
+      state: 'Maharashtra'
+    },
+    scholarship: false
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6ab3'),
+    rollNo: 107,
+    name: 'Anjali',
+    age: 20,
+    department: 'CSE',
+    marks: 95,
+    skills: [
+      'Java',
+      'Python',
+      'AI',
+      'MongoDB'
+    ],
+    address: {
+      city: 'Bangalore',
+      state: 'Karnataka'
+    },
+    scholarship: true
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6ab4'),
+    rollNo: 108,
+    name: 'Rohit',
+    age: 22,
+    department: 'IT',
+    marks: 76,
+    skills: [
+      'JavaScript',
+      'HTML',
+      'CSS'
+    ],
+    address: {
+      city: 'Hyderabad',
+      state: 'Telangana'
+    },
+    scholarship: false
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6ab5'),
+    rollNo: 109,
+    name: 'Divya',
+    age: 21,
+    department: 'CSE',
+    marks: 89,
+    skills: [
+      'Python',
+      'MongoDB',
+      'Java'
+    ],
+    address: {
+      city: 'Chennai',
+      state: 'Tamil Nadu'
+    },
+    scholarship: true
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6ab6'),
+    rollNo: 110,
+    name: 'Suresh',
+    age: 23,
+    department: 'CIVIL',
+    marks: 70,
+    skills: [
+      'AutoCAD',
+      'C',
+      'STAAD'
+    ],
+    address: {
+      city: 'Vijayawada',
+      state: 'Andhra Pradesh'
+    },
+    scholarship: false
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6ab7'),
+    rollNo: 111,
+    name: 'Meena',
+    age: 22,
+    department: 'ECE',
+    marks: 82,
+    skills: [
+      'Python',
+      'Arduino',
+      'IoT'
+    ],
+    address: {
+      city: 'Bangalore',
+      state: 'Karnataka'
+    },
+    scholarship: true
+  },
+  {
+    _id: ObjectId('6a9faf6219dd00beaa8c6ab8'),
+    rollNo: 112,
+    name: 'Akash',
+    age: 25,
+    department: 'CSE',
+    marks: 60,
+    skills: [
+      'C',
+      'Java'
+    ],
+    address: {
+      city: 'Hyderabad',
+      state: 'Telangana'
+    },
+    scholarship: false
+  },
+  {
+    _id: ObjectId('6aa0cb7fbe4fb4bc146fc937'),
+    rollNo: 113,
+    name: 'Kavya',
+    age: 22,
+    department: 'CSE',
+    marks: 92,
+    skills: [
+      'Python',
+      'MongoDB'
+    ],
+    address: {
+      city: 'Chennai',
+      state: 'Tamil Nadu'
+    },
+    scholarship: true
+  }
+]
+
+=== JOBS ===
+[
+  {
+    _id: ObjectId('6aa0cbbd829d080a02b1853f'),
+    jobId: 'J201',
+    companyId: 'C101',
+    title: 'Software Development Engineer (SDE-1)',
+    eligibleDepts: [
+      'CSE',
+      'IT'
+    ],
+    minMarksCriteria: 80,
+    requiredSkills: [
+      'Java',
+      'Python',
+      'MongoDB'
+    ],
+    packageLPA: 12.5,
+    location: 'Bangalore',
+    status: 'Open'
+  },
+  {
+    _id: ObjectId('6aa0cbbd829d080a02b18540'),
+    jobId: 'J202',
+    companyId: 'C103',
+    title: 'Full Stack Web Developer',
+    eligibleDepts: [
+      'CSE',
+      'IT',
+      'ECE'
+    ],
+    minMarksCriteria: 75,
+    requiredSkills: [
+      'Python',
+      'JavaScript',
+      'HTML'
+    ],
+    packageLPA: 9,
+    location: 'Chennai',
+    status: 'Open'
+  },
+  {
+    _id: ObjectId('6aa0cbbd829d080a02b18541'),
+    jobId: 'J203',
+    companyId: 'C105',
+    title: 'Embedded Hardware Engineer',
+    eligibleDepts: [
+      'ECE',
+      'EEE'
+    ],
+    minMarksCriteria: 80,
+    requiredSkills: [
+      'C',
+      'Arduino',
+      'MATLAB'
+    ],
+    packageLPA: 16,
+    location: 'Bangalore',
+    status: 'Open'
+  },
+  {
+    _id: ObjectId('6aa0cbbd829d080a02b18542'),
+    jobId: 'J204',
+    companyId: 'C106',
+    title: 'Graduate Structural Engineer',
+    eligibleDepts: [
+      'CIVIL',
+      'MECH'
+    ],
+    minMarksCriteria: 70,
+    requiredSkills: [
+      'AutoCAD',
+      'STAAD'
+    ],
+    packageLPA: 6.5,
+    location: 'Hyderabad',
+    status: 'Closed'
+  }
+]
