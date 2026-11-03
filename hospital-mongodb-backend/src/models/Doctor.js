@@ -1,0 +1,3 @@
+const mongoose=require("mongoose");
+const schema=new mongoose.Schema({name:{type:String,required:true},email:{type:String,required:true,unique:true},specialization:{type:String,required:true},department:{type:String,required:true},consultationFee:{type:Number,min:0,required:true},available:{type:Boolean,default:true}},{timestamps:true});
+schema.index({department:1,specialization:1});module.exports=mongoose.model("Doctor",schema);

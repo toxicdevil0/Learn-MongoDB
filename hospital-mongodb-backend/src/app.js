@@ -1,0 +1,3 @@
+const express=require("express"),cors=require("cors"),morgan=require("morgan"),api=require("./routes/api");
+const app=express();app.use(cors());app.use(express.json());app.use(morgan("dev"));app.get("/health",(q,s)=>s.json({status:"ok"}));app.use("/api",api);
+app.use((q,s)=>s.status(404).json({message:"Route not found"}));app.use((e,q,s,n)=>{if(e.code===11000)return s.status(409).json({message:"Duplicate value"});if(e.name==="ValidationError")return s.status(400).json({message:e.message});console.error(e);s.status(500).json({message:"Internal server error"});});module.exports=app;

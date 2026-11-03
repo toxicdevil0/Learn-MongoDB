@@ -1,0 +1,3 @@
+const mongoose=require("mongoose");
+const schema=new mongoose.Schema({name:{type:String,required:true,trim:true},email:{type:String,required:true,unique:true,lowercase:true},phone:{type:String,required:true},dateOfBirth:{type:Date,required:true},gender:{type:String,enum:["male","female","other"],required:true},bloodGroup:String,medicalNotes:[String]},{timestamps:true});
+schema.index({bloodGroup:1,createdAt:-1});module.exports=mongoose.model("Patient",schema);

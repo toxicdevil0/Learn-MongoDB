@@ -1,0 +1,1 @@
+require("dotenv").config();const app=require("./app"),connect=require("./config/db");connect().then(()=>app.listen(process.env.PORT||5000,()=>console.log("API ready"))).catch(e=>{console.error(e);process.exit(1);});

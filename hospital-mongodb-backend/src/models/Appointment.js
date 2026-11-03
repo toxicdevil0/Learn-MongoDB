@@ -1,0 +1,3 @@
+const mongoose=require("mongoose");
+const schema=new mongoose.Schema({patient:{type:mongoose.Schema.Types.ObjectId,ref:"Patient",required:true},doctor:{type:mongoose.Schema.Types.ObjectId,ref:"Doctor",required:true},appointmentDate:{type:Date,required:true},reason:{type:String,required:true},status:{type:String,enum:["booked","completed","cancelled"],default:"booked"}},{timestamps:true});
+schema.index({doctor:1,appointmentDate:1});schema.index({patient:1,appointmentDate:-1});schema.index({status:1,appointmentDate:1});module.exports=mongoose.model("Appointment",schema);
